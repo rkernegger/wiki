@@ -1,8 +1,8 @@
 ## Block Reward
 
-The consensus engine has support for using a contract to calculate block rewards, the engine passes
-a list of benefactors and reward types to the contract which then returns a list of addresses and
-respective rewards.
+Parity's consensus engine allows using a smart contract for block reward calculation. The engine
+passes a list of benefactors and reward types to the contract which then returns a list of addresses
+and respective rewards.
 
 ### Contract
 
@@ -19,9 +19,9 @@ interface BlockReward {
 }
 ```
 
-The kind array should have the same length as the benefactors array. The function should return two
+The kind array should have the same length as the benefactors' array. The function should return two
 arrays of equal length. One containing addresses to reward, and the other the corresponding balance
-increases.
+increase.
 
 Currently the engine supports the following types of rewards:
 
@@ -31,13 +31,14 @@ Currently the engine supports the following types of rewards:
 - 3 - External - Reward attributed by an external protocol (e.g. block reward contract)
 
 The reward contract will receive as input reward types of 0 to 2, and any reward attributed by it
-will be labeled as external (this is visible when tracing rewards).
+will be labelled as external (this is visible when tracing rewards).
 
 The contract [ABI](https://github.com/parity-contracts/block-reward/blob/6c645a93a0ae1eb0a34bfe85071e4ce36deed3b3/abis/BlockReward.json) as well as an example contract can be found [here](https://github.com/parity-contracts/block-reward).
 
 ### AuthorityRound
 
-Currently only the AuRa engine supports the block reward contract. It can be enabled by defining the address of the block reward contract in the chainspec and a block to activate it:
+AuRa is currently the only engine supporting a block reward contract. It can be enabled by defining
+the address of the block reward contract in the chainspec and a block to activate it:
 
 ```json
 "engine": {
