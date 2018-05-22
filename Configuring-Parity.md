@@ -171,8 +171,8 @@ color = true
 ## Presets
 Parity can be launched with a [preset configuration file](https://github.com/paritytech/parity/tree/1d9542fe88044d0831471510beb23626050f1bbf/parity/cli/presets) using `--config` flag with one of the following value:
 - `dev`: uses [dev chain specifications](https://wiki.parity.io/Private-development-chain.html) with [Instant-seal](https://wiki.parity.io/Pluggable-Consensus.html#instant-seal) consensus engine. The gas price is set to 0.
-- `dev-insecure`: uses the same configuration as `dev`, plus sets the flag `no_consensus`, allows all RPC APIs and accepts all RPC interfaces and hosts, as well as all IPFS hosts. 
-- `insecure`: uses the Mainnet default configuration, plus sets the flag `no_consensus`, allows all RPC APIs and accepts all RPC interfaces and hosts, as well as all IPFS hosts. 
+- `dev-insecure`: uses the same configuration as `dev`, plus sets the flag `no_consensus`, allows all RPC APIs and accepts all RPC interfaces and hosts, as well as all IPFS hosts.
+- `insecure`: uses the Mainnet default configuration, plus sets the flag `no_consensus`, allows all RPC APIs and accepts all RPC interfaces and hosts, as well as all IPFS hosts.
 - `mining`: uses the Mainnet default configuration, plus increases the number of peers to min 50 and max 100, it disables the Dapps and IPC interface. It forces the sealing of blocks with a minimum of 4 seconds interval, forces the reseal for any new transaction (external or local), reduces the transaction queue size to 2048 while increasing the cache size to 256 MB and setting the `trace` logging level for the `miner` and `own_tx` modules.
 - `non-standard-ports`: sets the client to listen to the port 30305 and 8645 for RPC connections.
 
@@ -269,7 +269,7 @@ Convenience options:
         All servers will listen on external interfaces and will be
         remotely accessible. It's equivalent with setting the
         following:
-        --{{ws,jsonrpc,ui,ipfs,secret_store,stratum}}-interface=all
+        --[ws,jsonrpc,ui,ipfs-api,secretstore,secretstore-http,stratum]-interface=all
         --*-hosts=all    This option is UNSAFE and should be used
         with great care!
 
@@ -1030,19 +1030,19 @@ All other flags passed to Parity UI will be passed down to parity when trying to
 ```bash
 Operating Options:
     --no-run-parity
-        Parity UI will not attempt to run 
+        Parity UI will not attempt to run
         the locally installed parity.
 
     --ui-dev
-        Parity UI will load http://localhost:3000. 
+        Parity UI will load http://localhost:3000.
         WARNING: Only use this is you plan on developing on Parity UI.
 
     --ws-interface=[IP]
-        Specify the hostname portion of the WebSockets server 
-        Parity UI will connect to. IP should be an 
+        Specify the hostname portion of the WebSockets server
+        Parity UI will connect to. IP should be an
         interface's IP address. (default: 127.0.0.1)
 
     --ws-port=[PORT]
-        Specify the port portion of the WebSockets 
+        Specify the port portion of the WebSockets
         server Parity UI will connect to. (default: 8546)
 ```
